@@ -135,7 +135,7 @@ The synchronization feature is intended for trusted local networks only.
 
 👉 **Download:**
 
-[StuAuth Android](https://github.com/Spiritecho777/StuAuth/releases)
+[StuAuth](https://github.com/Spiritecho777/StuAuth/releases)
 
 ## Build from Source
 
