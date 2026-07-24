@@ -133,21 +133,50 @@ The synchronization feature is intended for trusted local networks only.
 
 ## Desktop Version
 
-Built with:
+👉 **Download:**
 
-- C++
-- Qt 6
+[StuAuth Android](https://github.com/Spiritecho777/StuAuth/releases)
+
+## Build from Source
+
+### Requirements
+
+- Visual Studio 2022
+- Qt 6.10+
+- CMake
 - OpenSSL
-- ZXing
+- Inno Setup (optional)
+- WSL + AlmaLinux (for Linux AppImage build)
 
 ### Build
 
-```bash
-git clone https://github.com/Spiritecho777/StuAuth.git
-cd StuAuth
+```powershell
+.\Build.ps1 all_secure_dynamic StuAuth
+```
 
-cmake -B build
-cmake --build build --config Release
+Available targets:
+
+```text
+all_static
+all_secure_static
+all_dynamic
+all_secure_dynamic
+```
+
+Example:
+
+```powershell
+.\Build.ps1 all_secure_dynamic StuAuth
+```
+
+This will:
+
+```
+- Build the Windows version
+- Deploy Qt runtime files
+- Generate the installer
+- Build the Linux AppImage
+- Package everything into the Deploy folder
 ```
 
 ---
