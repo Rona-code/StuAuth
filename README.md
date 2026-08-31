@@ -135,7 +135,7 @@ The synchronization feature is intended for trusted local networks only.
 
 👉 **Download:**
 
-[StuAuth](https://github.com/Spiritecho777/StuAuth/releases)
+[StuAuth](https://github.com/Rona-code/StuAuth/releases)
 
 ## Build from Source
 
@@ -187,7 +187,7 @@ An Android version built with .NET MAUI is also available.
 
 👉 **Download:**
 
-[StuAuth Android](https://github.com/Spiritecho777/StuAuthMobile/releases)
+[StuAuth Android](https://github.com/Rona-code/StuAuthMobile/releases)
 
 ### Features
 
@@ -204,7 +204,7 @@ A Firefox extension is also available.
 
 👉 **Download:**
 
-[StuAuth Firefox Extension](https://github.com/Spiritecho777/StuAuthWeb/releases)
+[StuAuth Firefox Extension](https://github.com/Rona-code/StuAuthWeb/releases)
 
 ### Features
 
