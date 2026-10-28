@@ -7,6 +7,9 @@
 AppId={{#AppId}}
 AppName={#ProjectName}
 AppVersion={#ProjectVersion}
+VersionInfoVersion={#ProjectVersion}
+VersionInfoCopyright=Copyright (C) 2026 Rona
+AppCopyright=Copyright (C) 2026 Rona
 
 DefaultDirName={pf}\{#ProjectName}
 DefaultGroupName={#ProjectName}
@@ -19,7 +22,7 @@ SolidCompression=yes
 PrivilegesRequired=admin
 
 ; Icône de l’installeur
-SetupIconFile=..\Asset\Icone.ico
+SetupIconFile=..\resources\Icone.ico
 
 ; Icône affichée dans Ajout/Suppression de programmes
 UninstallDisplayIcon={app}\{#ExeName}

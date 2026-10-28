@@ -1,13 +1,11 @@
 <RCC>
 	<qresource prefix="icons">
-		<file>Asset/IconeOFF.png</file>
-		<file>Asset/IconeON.png</file>
-		<file>Asset/Icone.png</file>
+		<file>resources/Icone.png</file>
 	</qresource>
 	<qresource prefix="/translations">
-		<file>Asset/translations/stuauth_fr.qm</file>
-		<file>Asset/translations/stuauth_en.qm</file>
-		<file>Asset/translations/stuauth_bz.qm</file>
-		<file>Asset/translations/stuauth_ja.qm</file>
+		<file>resources/translations/stuauth_fr.qm</file>
+		<file>resources/translations/stuauth_en.qm</file>
+		<file>resources/translations/stuauth_bz.qm</file>
+		<file>resources/translations/stuauth_ja.qm</file>
 	</qresource>
 </RCC>

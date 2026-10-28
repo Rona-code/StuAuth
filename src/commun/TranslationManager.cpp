@@ -9,7 +9,7 @@ TranslationManager& TranslationManager::instance() {
 void TranslationManager::setLanguage(const QString& lang) {
     qApp->removeTranslator(&m_translator);
 
-    if (m_translator.load(":/translations/Asset/translations/stuauth_" + lang + ".qm")) {
+    if (m_translator.load(":/resources/translations/stuauth_" + lang + ".qm")) {
         qApp->installTranslator(&m_translator);
 		m_currentLanguage = lang;
 		m_settings.setValue("language", lang);

@@ -1,7 +1,34 @@
 cmake_minimum_required(VERSION 3.16)
 
+option(TARGET_ARM64 "Compilation croisée Linux ARM64 (clang + sysroot)" OFF)
+
+if (TARGET_ARM64)
+    set(CMAKE_SYSTEM_NAME Linux)
+    set(CMAKE_SYSTEM_PROCESSOR aarch64)
+
+    set(SYSROOT $ENV{HOME}/sysroot-aarch64)
+    set(GCC_DIR ${SYSROOT}/usr/lib/gcc/aarch64-redhat-linux/11)
+
+    set(CMAKE_SYSROOT ${SYSROOT})
+    set(CMAKE_C_COMPILER clang)
+    set(CMAKE_CXX_COMPILER clang++)
+    set(CMAKE_C_COMPILER_TARGET aarch64-linux-gnu)
+    set(CMAKE_CXX_COMPILER_TARGET aarch64-linux-gnu)
+
+    set(CMAKE_C_FLAGS_INIT   "--gcc-install-dir=${GCC_DIR}")
+    set(CMAKE_CXX_FLAGS_INIT "--gcc-install-dir=${GCC_DIR}")
+    set(CMAKE_EXE_LINKER_FLAGS_INIT    "-fuse-ld=lld")
+    set(CMAKE_SHARED_LINKER_FLAGS_INIT "-fuse-ld=lld")
+
+    set(CMAKE_FIND_ROOT_PATH ${SYSROOT})
+    set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+    set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+    set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+    set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+endif()
+
 project(StuAuth
-    VERSION 4.0.0
+    VERSION 4.1.0
     LANGUAGES CXX
 )
 
@@ -15,7 +42,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # -------------------------
 # Version appli (unique)
 # -------------------------
-set(APP_VERSION "4.0.1")
+set(APP_VERSION "4.1.0")
+set(APP_AUTHOR "Rona")
+set(APP_SUMMARY "A Local TOTP/HOTP authenticator. No cloud, no sync, no tracking.")
 string(REPLACE "." "," APP_VERSION_COMMA "${APP_VERSION}")
 add_definitions(-DAPP_VERSION="${APP_VERSION}")
 
@@ -31,8 +60,8 @@ if (WIN32)
     ) 
     # Copie l'icône dans le build dir pour que le .rc la trouve
     configure_file(
-        ${CMAKE_SOURCE_DIR}/Asset/Icone.ico
-        ${CMAKE_BINARY_DIR}/Asset/Icone.ico
+        ${CMAKE_SOURCE_DIR}/resources/Icone.ico
+        ${CMAKE_BINARY_DIR}/resources/Icone.ico
         COPYONLY
     )
 endif()
@@ -60,6 +89,11 @@ set(ZXING_READERS ON CACHE BOOL "" FORCE)
 set(ZXING_WRITERS ON CACHE BOOL "" FORCE)
 set(ZXING_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(ZXING_TESTS OFF CACHE BOOL "" FORCE)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(BUILD_BLACKBOX_TESTS OFF CACHE BOOL "" FORCE)
+set(BUILD_UNIT_TESTS OFF CACHE BOOL "" FORCE)
 
 add_subdirectory(src/thirdparty/zxing)
 
@@ -96,26 +130,21 @@ qt_add_executable(${PROJECT_NAME}
 # -------------------------
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/Asset
-        $<TARGET_FILE_DIR:${PROJECT_NAME}>/Asset
+        ${CMAKE_SOURCE_DIR}/resources
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>/resources
 )
 
 # -------------------------
 # Ressources Qt (Windows + Linux)
 # -------------------------
-qt_add_resources(${PROJECT_NAME} "resources"
-    PREFIX "/icons"
+qt_add_resources(${PROJECT_NAME} "app_resources"
+    PREFIX "/"
     FILES
-        Asset/Icone.png
-)
-
-qt_add_resources(${PROJECT_NAME} "translations"
-    PREFIX "/translations"
-    FILES
-        Asset/translations/stuauth_fr.qm
-        Asset/translations/stuauth_en.qm
-        Asset/translations/stuauth_bz.qm
-        Asset/translations/stuauth_ja.qm
+        resources/Icone.png
+        resources/translations/stuauth_fr.qm
+        resources/translations/stuauth_en.qm
+        resources/translations/stuauth_bz.qm
+        resources/translations/stuauth_ja.qm
 )
 
 # -------------------------

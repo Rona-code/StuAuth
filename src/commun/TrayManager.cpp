@@ -11,7 +11,7 @@
 
 TrayManager::TrayManager(StuauthWindow* main, QObject* parent) : QObject(parent), mainWindow(main)
 {
-	tray = new QSystemTrayIcon(QIcon(":/icons/Asset/Icone.png"), this);
+	tray = new QSystemTrayIcon(QIcon(":/icons/resources/Icone.png"), this);
 	trayMenu = new QMenu();
     
     trayMenu->addSeparator();

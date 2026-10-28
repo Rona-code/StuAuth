@@ -1,6 +1,7 @@
+#pragma code_page(65001)
 #include <windows.h>
 
-IDI_ICON1 ICON "Asset/Icone.ico"
+IDI_ICON1 ICON "resources/Icone.ico"
 
 VS_VERSION_INFO VERSIONINFO
 FILEVERSION @APP_VERSION_COMMA@
@@ -19,6 +20,7 @@ BEGIN
 			VALUE "FileDescription", "StuAuth Application\0"
 			VALUE "FileVersion", "@APP_VERSION@\0"
 			VALUE "InternalName", "StuAuth\0"
+			VALUE "LegalCopyright", "Copyright © Rona 2026\0"
 			VALUE "OriginalFilename", "StuAuth.exe\0"
 			VALUE "ProductName", "StuAuth\0"
 			VALUE "ProductVersion", "@APP_VERSION@\0"
