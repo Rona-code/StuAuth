@@ -364,3 +364,5 @@ FodyWeavers.xsd
 /Bug a resoudre
 /build
 /Deploy
+/Asset/Thumbs.db
+/resources/Thumbs.db
