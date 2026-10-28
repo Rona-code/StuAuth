@@ -28,7 +28,7 @@ if (TARGET_ARM64)
 endif()
 
 project(StuAuth
-    VERSION 4.1.0
+    VERSION 4.1.1
     LANGUAGES CXX
 )
 
@@ -42,7 +42,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # -------------------------
 # Version appli (unique)
 # -------------------------
-set(APP_VERSION "4.1.0")
+set(APP_VERSION "4.1.1")
 set(APP_AUTHOR "Rona")
 set(APP_SUMMARY "A Local TOTP/HOTP authenticator. No cloud, no sync, no tracking.")
 string(REPLACE "." "," APP_VERSION_COMMA "${APP_VERSION}")

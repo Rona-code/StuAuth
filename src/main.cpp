@@ -21,6 +21,8 @@ int main(int argc, char* argv[])
 
     QApplication a(argc, argv);
 
+    a.setWindowIcon(QIcon(":/resources/Icone.png"));
+
     // Charge la langue de base
     TranslationManager::instance().loadSavedLanguage();
 
