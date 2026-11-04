@@ -1,3 +1,4 @@
+test
 # StuAuth
 
 **Private. Offline. Yours.**
